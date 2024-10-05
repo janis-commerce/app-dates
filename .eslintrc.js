@@ -2,7 +2,7 @@ module.exports = {
 	env: {
 		node: true,
 		es6: true,
-		jest: true,
+		jest: true
 	},
 	parser: '@babel/eslint-parser',
 	extends: ['plugin:import/recommended', 'eslint:recommended', 'plugin:prettier/recommended'],
@@ -10,7 +10,7 @@ module.exports = {
 	overrides: [],
 	parserOptions: {
 		sourceType: 'module',
-		requireConfigFile: false,
+		requireConfigFile: false
 	},
 	rules: {
 		'prettier/prettier': 'error',
@@ -18,8 +18,8 @@ module.exports = {
 			'error',
 			'always',
 			{
-				ignorePackages: true,
-			},
-		],
-	},
+				ignorePackages: true
+			}
+		]
+	}
 };

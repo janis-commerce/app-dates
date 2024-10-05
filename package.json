@@ -3,6 +3,7 @@
 	"version": "0.0.1",
 	"description": "Dates helper",
 	"main": "lib/index.js",
+	"type": "module",
 	"scripts": {
 		"lint": "eslint .",
 		"prepare": "husky install",
@@ -52,5 +53,8 @@
 	"bugs": {
 		"url": "https://github.com/janis-commerce/app-dates/issues"
 	},
-	"homepage": "https://github.com/janis-commerce/app-dates#readme"
+	"homepage": "https://github.com/janis-commerce/app-dates#readme",
+	"dependencies": {
+		"date-fns": "^4.1.0"
+	}
 }
