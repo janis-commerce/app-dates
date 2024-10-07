@@ -20,6 +20,7 @@ npm install @janiscommerce/apps-dates
 * [DateHandler](#DateHandler)
     * [new DateHandler(config)](#new_DateHandler_new)
     * [.format(date, [format], [options])](#DateHandler+format) ⇒ <code>string</code> \| <code>null</code>
+    * [.isValid(date)](#DateHandler+isValid) ⇒ <code>boolean</code>
 
 <a name="new_DateHandler_new"></a>
 
@@ -34,21 +35,36 @@ npm install @janiscommerce/apps-dates
 
 **Example**  
 ```js
-const Dates = new DateHanlder({locale: 'es'})
+const Dates = new DateHandler({locale: 'es'})
 ```
 <a name="DateHandler+format"></a>
 
 ### dateHandler.format(date, [format], [options]) ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance method of [<code>DateHandler</code>](#DateHandler)  
 
-| Param | Type | Default |
-| --- | --- | --- |
-| date | <code>Date</code> |  | 
-| [format] | <code>string</code> | <code>&quot;P&quot;</code> | 
-| [options] | <code>Object</code> | <code>{}</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| date | <code>Date</code> |  |  |
+| [format] | <code>string</code> | <code>&quot;P&quot;</code> | <p>For more information, see <a href="https://date-fns.org/v4.1.0/docs/format">formats</a></p> |
+| [options] | <code>Object</code> | <code>{}</code> | <p>For more information, see <a href="https://date-fns.org/v4.1.0/docs/format#types/FormatOptions/630">options</a></p> |
 
 **Example**  
 ```js
-const Dates = new DateHanlder({locale: 'es'})
+const Dates = new DateHandler({locale: 'es'})
 Dates.format('2024-10-04T21:26:33.801Z') // 10/04/2024
+```
+<a name="DateHandler+isValid"></a>
+
+### dateHandler.isValid(date) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>DateHandler</code>](#DateHandler)  
+
+| Param | Type |
+| --- | --- |
+| date | <code>Date</code> | 
+
+**Example**  
+```js
+const Dates = new DateHandler({locale: 'es'})
+Dates.isValid('2024-10-04T21:26:33.801Z') // true
+Dates.isValid('Janis commerce') // false
 ```
