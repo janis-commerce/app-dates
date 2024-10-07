@@ -30,8 +30,12 @@ npm install @janiscommerce/apps-dates
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | config | <code>Object</code> |  |  |
-| [config.locale] | <code>string</code> | <code>&quot;en&quot;</code> | <p>config.locale</p> |
+| [config.locale] | <code>&quot;en&quot;</code> \| <code>&quot;es&quot;</code> \| <code>&quot;pt-BR&quot;</code> \| <code>&quot;pt&quot;</code> | <code>en</code> | <p>config.locale</p> |
 
+**Example**  
+```js
+const Dates = new DateHanlder({locale: 'es'})
+```
 <a name="DateHandler+format"></a>
 
 ### dateHandler.format(date, [format], [options]) ⇒ <code>string</code> \| <code>null</code>
