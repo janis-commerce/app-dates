@@ -40,6 +40,8 @@ const Dates = new DateHandler({locale: 'es'})
 <a name="DateHandler+format"></a>
 
 ### dateHandler.format(date, [format], [options]) ⇒ <code>string</code> \| <code>null</code>
+<p>Formate Date</p>
+
 **Kind**: instance method of [<code>DateHandler</code>](#DateHandler)  
 
 | Param | Type | Default | Description |
@@ -56,6 +58,8 @@ Dates.format('2024-10-04T21:26:33.801Z') // 10/04/2024
 <a name="DateHandler+isValid"></a>
 
 ### dateHandler.isValid(date) ⇒ <code>boolean</code>
+<p>return true or false if date is Valid</p>
+
 **Kind**: instance method of [<code>DateHandler</code>](#DateHandler)  
 
 | Param | Type |
