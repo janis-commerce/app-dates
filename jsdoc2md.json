@@ -1,7 +1,8 @@
 {
 	"source": {
 		"includePattern": ".+\\.js(doc|x)?$",
-		"excludePattern": ".+\\.(test|spec).ts"
+		"excludePattern": ".+\\.(test|spec).ts",
+		"exclude": ["./lib/helpers"]
 	},
 	"plugins": ["plugins/markdown", "node_modules/jsdoc-babel"],
 	"babel": {

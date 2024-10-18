@@ -1,17 +1,18 @@
 import DateHandler from '../lib/index.js';
-import sinon from 'sinon';
+import { useFakeTimers } from 'sinon';
 import { strict as assert } from 'assert';
 
 describe('format method', () => {
 	let mockDate;
 	const mockNow = new Date(2024, 9, 1, 0, 0);
 	beforeEach(() => {
-		mockDate = sinon.useFakeTimers(mockNow.getTime());
+		mockDate = useFakeTimers(mockNow.getTime());
 	});
 
 	afterEach(() => {
 		mockDate.restore();
 	});
+	describe('one date cases', () => {});
 
 	it('expect to throw error and return null', () => {
 		const Dates = new DateHandler();
