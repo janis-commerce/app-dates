@@ -68,6 +68,18 @@ describe('format method', () => {
 			);
 		});
 
+		it('expect to return range date when is relative date and range time', () => {
+			const mockNow = new Date(2024, 9, 18, 0, 0);
+
+			mockDate = useFakeTimers(mockNow.getTime());
+
+			const Dates = new DateHandler();
+			assert.equal(
+				Dates.format(['2024-10-18T20:50:03.553Z', '2024-10-18T22:50:03.553Z']),
+				'Today from 17:50 to 19:50'
+			);
+		});
+
 		it('expect to return range date when is not relative date and single time', () => {
 			const mockNow = new Date(2024, 9, 18, 0, 0);
 
@@ -80,15 +92,15 @@ describe('format method', () => {
 			);
 		});
 
-		it('expect to return range date when is not relative date and range time', () => {
+		it('expect to return range date when is not relative but same date with range time', () => {
 			const mockNow = new Date(2024, 9, 18, 0, 0);
 
 			mockDate = useFakeTimers(mockNow.getTime());
 
 			const Dates = new DateHandler();
 			assert.equal(
-				Dates.format(['2024-10-18T20:50:03.553Z', '2024-10-18T22:50:03.553Z']),
-				'Today from 17:50 to 19:50'
+				Dates.format(['2024-10-20T22:50:03.553Z', '2024-10-20T23:50:03.553Z']),
+				'20/10 from 19:50 to 20:50'
 			);
 		});
 
