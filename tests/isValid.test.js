@@ -1,5 +1,4 @@
 import DateHandler from '../lib/index.js';
-import sinon from 'sinon';
 import { strict as assert } from 'assert';
 
 describe('isValid method', () => {
@@ -15,5 +14,6 @@ describe('isValid method', () => {
 		assert.equal(Dates.isValid(new Date()), true);
 		assert.equal(Dates.isValid(2323123), true);
 		assert.equal(Dates.isValid(new Date('2024-09-07T03:00:00.000Z')), true);
+		assert.equal(Dates.isValid('2024-09-07T03:00:00.000Z'), true);
 	});
 });
