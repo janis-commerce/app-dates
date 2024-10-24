@@ -38,7 +38,7 @@ describe('format method', () => {
 		});
 	});
 
-	describe('Witch range dates', () => {
+	describe('With range dates', () => {
 		it('expect to return null when dates are invalid', () => {
 			const Dates = new DateHandler();
 			assert.equal(Dates.format([{}, NaN]), null);
