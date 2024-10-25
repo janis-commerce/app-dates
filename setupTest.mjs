@@ -10,7 +10,7 @@ const utcOffsetInMilliseconds = -3 * 60 * 60 * 1000;
 // Ajustamos la fecha para reflejar UTC-3
 const mockDate = new Date(fixedDateUTC.getTime() + utcOffsetInMilliseconds);
 console.log('mockDate :>> ', mockDate);
-console.log(Intl.DateTimeFormat().resolvedOptions().timeZone);
+console.log('mock', Intl.DateTimeFormat().resolvedOptions().timeZone);
 let clock;
 
 before(() => {
