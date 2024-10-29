@@ -1,8 +1,21 @@
+/* eslint-disable no-undef */
 import DateHandler from '../lib/index.js';
+import { useFakeTimers } from 'sinon';
 import { strict as assert } from 'assert';
 
+const mockNow = new Date(2024, 9, 18, 0, 0);
+
+let clock;
 //"2024-10-18T22:50:03.553Z"
 describe('format method', () => {
+	before(() => {
+		clock = useFakeTimers(mockNow);
+	});
+
+	after(() => {
+		clock.restore();
+	});
+
 	describe('With single date', () => {
 		it('expect to return null when date is invalid', () => {
 			const Dates = new DateHandler();
