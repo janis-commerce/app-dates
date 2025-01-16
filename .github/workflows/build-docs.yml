@@ -22,7 +22,7 @@ jobs:
 
       - name: build readme
         run: |
-          npm i -f
+          npm i
           npm run build-docs
         env:
           NPM_TOKEN: ${{ secrets.npm_token }}
