@@ -94,6 +94,14 @@ describe('format method', () => {
 			);
 		});
 
+		it('expect to return range date with year when dates are from different year', () => {
+			const Dates = new DateHandler();
+			assert.equal(
+				Dates.format(['2024-10-20T22:50:03.553Z', '2025-10-21T23:50:03.553Z']),
+				'10/20/2024 19:50 - 10/21/2025 20:50'
+			);
+		});
+
 		it('expect to return range date with not undefined value and take first two value ', () => {
 			const Dates = new DateHandler();
 			assert.equal(
