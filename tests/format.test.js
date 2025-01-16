@@ -40,7 +40,7 @@ describe('format method', () => {
 		});
 	});
 
-	describe('W range dates', () => {
+	describe('With range dates', () => {
 		it('expect to return null when dates are invalid', () => {
 			const Dates = new DateHandler();
 			assert.equal(Dates.format([{}, NaN]), null);
@@ -90,6 +90,20 @@ describe('format method', () => {
 			const Dates = new DateHandler();
 			assert.equal(
 				Dates.format(['2024-10-20T22:50:03.553Z', '2024-10-21T23:50:03.553Z']),
+				'10/20 19:50 - 10/21 20:50'
+			);
+		});
+
+		it('expect to return range date with not undefined value and take first two value ', () => {
+			const Dates = new DateHandler();
+			assert.equal(
+				Dates.format([
+					'2024-10-20T22:50:03.553Z',
+					undefined,
+					'2024-10-21T23:50:03.553Z',
+					[],
+					'2024-10-21T23:50:03.553Z'
+				]),
 				'10/20 19:50 - 10/21 20:50'
 			);
 		});

@@ -21,7 +21,7 @@ npm install @janiscommerce/apps-dates
     * [new DateHandler(config)](#new_DateHandler_new)
     * [.isValid(date)](#DateHandler+isValid) ⇒ <code>boolean</code>
     * [.setLanguage(lang)](#DateHandler+setLanguage) ⇒ <code>void</code>
-    * [.format(date, [format])](#DateHandler+format) ⇒ <code>string</code> \| <code>null</code>
+    * [.format(date, format)](#DateHandler+format) ⇒ <code>string</code> \| <code>null</code>
 
 <a name="new_DateHandler_new"></a>
 
@@ -37,6 +37,7 @@ npm install @janiscommerce/apps-dates
 **Example**  
 ```js
 const Dates = new DateHandler({locale: 'es'})
+const Dates = new DateHandler() // default locale 'en'
 ```
 <a name="DateHandler+isValid"></a>
 
@@ -73,18 +74,19 @@ Dates.setLanguage('en')
 ```
 <a name="DateHandler+format"></a>
 
-### dateHandler.format(date, [format]) ⇒ <code>string</code> \| <code>null</code>
+### dateHandler.format(date, format) ⇒ <code>string</code> \| <code>null</code>
 <p>Formate Date</p>
 
 **Kind**: instance method of [<code>DateHandler</code>](#DateHandler)  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| date | <code>Date</code> \| <code>Array.&lt;Date&gt;</code> |  |  |
-| [format] | <code>string</code> | <code>&quot;P&quot;</code> | <p>For more information, see <a href="https://date-fns.org/v4.1.0/docs/format">formats</a></p> |
+| Param | Type | Description |
+| --- | --- | --- |
+| date | <code>Date</code> \| <code>Array.&lt;Date&gt;</code> |  |
+| format | <code>string</code> | <p>format of Date For more information, see <a href="https://date-fns.org/v4.1.0/docs/format">formats</a></p> |
 
 **Example**  
 ```js
 const Dates = new DateHandler({locale: 'es'})
 Dates.format('2024-10-04T21:26:33.801Z') // 10/04/2024
+Dates.format(['2024-10-20T22:50:03.553Z', 2024-10-21T22:50:03.553Z']), // '10/20 19:50 - 10/21 19:50
 ```
