@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 [Unreleased]
 
+## [1.0.2] - 2025-01-16
+
+### Fixed
+
+- command test:ci in github actions
+
 ## [1.0.1] - 2025-01-16
 
 ### Fixed
