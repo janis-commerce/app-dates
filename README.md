@@ -20,6 +20,7 @@ npm install @janiscommerce/apps-dates
 * [DateHandler](#DateHandler)
     * [new DateHandler(config)](#new_DateHandler_new)
     * [.isValid(date)](#DateHandler+isValid) ⇒ <code>boolean</code>
+    * [.setLanguage(lang)](#DateHandler+setLanguage) ⇒ <code>void</code>
     * [.format(date, [format], [options])](#DateHandler+format) ⇒ <code>string</code> \| <code>null</code>
 
 <a name="new_DateHandler_new"></a>
@@ -47,6 +48,23 @@ const Dates = new DateHandler({locale: 'es'})
 | Param | Type |
 | --- | --- |
 | date | <code>Date</code> | 
+
+**Example**  
+```js
+const Dates = new DateHandler({locale: 'es'})
+Dates.isValid('2024-10-04T21:26:33.801Z') // true
+Dates.isValid('Janis commerce') // false
+```
+<a name="DateHandler+setLanguage"></a>
+
+### dateHandler.setLanguage(lang) ⇒ <code>void</code>
+<p>Set language if need to be change</p>
+
+**Kind**: instance method of [<code>DateHandler</code>](#DateHandler)  
+
+| Param | Type |
+| --- | --- |
+| lang | <code>string</code> | 
 
 **Example**  
 ```js
