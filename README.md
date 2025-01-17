@@ -11,7 +11,7 @@ This package provides dates module for use in Janis apps.
 ## 📦 Installation
 
 ```sh
-npm install @janiscommerce/apps-dates
+npm install @janiscommerce/app-dates
 ```
 
 ## Module
