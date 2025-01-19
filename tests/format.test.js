@@ -22,21 +22,22 @@ describe('format method', () => {
 			assert.equal(Dates.format([]), null);
 		});
 
-		it('expect to return formatted date with string or one string inside array', () => {
+		it.only('expect to return formatted date with string or one string inside array', () => {
 			const Dates = new DateHandler({ locale: 'es' });
-			assert.equal(Dates.format(['2024-10-15T22:50:03.553Z']), '15/10 19:50');
-			assert.equal(Dates.format('2024-10-14T22:50:03.553Z'), '14/10 19:50');
+			assert.equal(Dates.format(['2024-10-15T22:50:03.553Z']), 'Until 15/10, 19:50 hs');
+			assert.equal(Dates.format('2024-10-14T22:50:03.553Z'), 'Until 14/10, 19:50 hs');
 		});
 
-		it('expect to return formatted Date in english format', () => {
+		it('expect to return formatted Date in Spanish format', () => {
 			const Dates = new DateHandler({ locale: 'en' });
-			assert.equal(Dates.format('2024-10-14T22:50:03.553Z'), '10/14 19:50');
+			Dates.setLanguage('es');
+			assert.equal(Dates.format('2024-10-14T22:50:03.553Z'), 'Hasta 10/14, 19:50 hs');
 		});
 
 		it('expect to return relative date when is today', () => {
 			const Dates = new DateHandler({ locale: 'en' });
 
-			assert.equal(Dates.format('2024-10-18T22:50:03.553Z'), 'Today at 7:50 PM');
+			assert.equal(Dates.format('2024-10-18T22:50:03.553Z'), 'Until today, 19:50 hs');
 		});
 	});
 
@@ -50,7 +51,7 @@ describe('format method', () => {
 			const Dates = new DateHandler();
 			assert.equal(
 				Dates.format(['2024-10-18T22:50:03.553Z', '2024-10-18T22:50:03.553Z']),
-				'Today at 19:50'
+				'Until today, 19:50'
 			);
 		});
 
@@ -58,7 +59,15 @@ describe('format method', () => {
 			const Dates = new DateHandler();
 			assert.equal(
 				Dates.format(['2024-10-19T22:50:03.553Z', '2024-10-19T22:50:03.553Z']),
-				'Tomorrow at 19:50'
+				'Until Tomorrow, 19:50 hs'
+			);
+		});
+
+		it('expect to return date with one data time with same time', () => {
+			const Dates = new DateHandler();
+			assert.equal(
+				Dates.format(['2024-10-24T22:50:03.553Z', '2024-10-24T22:50:03.553Z']),
+				'Until Tomorrow, 19:50 hs'
 			);
 		});
 
@@ -66,7 +75,7 @@ describe('format method', () => {
 			const Dates = new DateHandler();
 			assert.equal(
 				Dates.format(['2024-10-18T20:50:03.553Z', '2024-10-18T22:50:03.553Z']),
-				'Today from 17:50 to 19:50'
+				'Today, 17:50 - 19:50 hs'
 			);
 		});
 
@@ -74,7 +83,7 @@ describe('format method', () => {
 			const Dates = new DateHandler();
 			assert.equal(
 				Dates.format(['2024-10-20T22:50:03.553Z', '2024-10-21T22:50:03.553Z']),
-				'10/20 19:50 - 10/21 19:50'
+				'Oct 20 19:50 - oct 21 19:50'
 			);
 		});
 
@@ -82,7 +91,13 @@ describe('format method', () => {
 			const Dates = new DateHandler();
 			assert.equal(
 				Dates.format(['2024-10-20T22:50:03.553Z', '2024-10-20T23:50:03.553Z']),
-				'20/10 from 19:50 to 20:50'
+				'Oct 20, 19:50 - 20:50 hs'
+			);
+
+			Dates.setLanguage('es');
+			assert.equal(
+				Dates.format(['2024-10-20T22:50:03.553Z', '2024-10-20T23:50:03.553Z']),
+				'20 oct, 19:50 - 20:50 hs'
 			);
 		});
 
@@ -90,7 +105,7 @@ describe('format method', () => {
 			const Dates = new DateHandler();
 			assert.equal(
 				Dates.format(['2024-10-20T22:50:03.553Z', '2024-10-21T23:50:03.553Z']),
-				'10/20 19:50 - 10/21 20:50'
+				'Oct 20, 19:50 - oct 21, 20:50'
 			);
 		});
 
@@ -98,7 +113,7 @@ describe('format method', () => {
 			const Dates = new DateHandler();
 			assert.equal(
 				Dates.format(['2024-10-20T22:50:03.553Z', '2025-10-21T23:50:03.553Z']),
-				'10/20/2024 19:50 - 10/21/2025 20:50'
+				'Oct 20 2024, 19:50 - oct 21 2025, 20:50'
 			);
 		});
 
@@ -112,7 +127,7 @@ describe('format method', () => {
 					[],
 					'2024-10-21T23:50:03.553Z'
 				]),
-				'10/20 19:50 - 10/21 20:50'
+				'Oct 20, 19:50 - oct 21, 20:50 hs'
 			);
 		});
 	});
