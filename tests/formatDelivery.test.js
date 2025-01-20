@@ -22,22 +22,40 @@ describe('format method', () => {
 			assert.equal(Dates.formatDelivery([]), null);
 		});
 
-		it('expect to return formatted date with string or one string inside array', () => {
-			const Dates = new DateHandler();
-			assert.equal(Dates.formatDelivery(['2024-10-15T22:50:03.553Z']), 'Until Oct 15, 19:50 hs');
+		describe('with lang es', () => {
+			const Dates = new DateHandler({ locale: 'es' });
+			it('expect to return formatted date with string or one string inside array', () => {
+				assert.equal(Dates.formatDelivery(['2024-10-15T22:50:03.553Z']), 'Hasta 15 oct, 19:50 hs');
+			});
+
+			it('expect to return relative date when is today or tomorrow', () => {
+				assert.equal(Dates.formatDelivery('2024-10-18T22:50:03.553Z'), 'Hasta hoy, 19:50 hs');
+				assert.equal(Dates.formatDelivery('2024-10-19T22:50:03.553Z'), 'Hasta mañana, 19:50 hs');
+			});
 		});
 
-		it.only('expect to return formatted Date in Spanish format', () => {
-			const Dates = new DateHandler();
-			Dates.setLanguage('es');
-			assert.equal(Dates.formatDelivery('2024-10-14T22:50:03.553Z'), 'Hasta 14 oct, 19:50 hs');
+		describe('with lang en', () => {
+			const Dates = new DateHandler({ locale: 'en' });
+			it('expect to return formatted date with string or one string inside array', () => {
+				assert.equal(Dates.formatDelivery(['2024-10-15T22:50:03.553Z']), 'Until Oct 15, 19:50 hs');
+			});
+
+			it('expect to return relative date when is today or tomorrow', () => {
+				assert.equal(Dates.formatDelivery('2024-10-18T22:50:03.553Z'), 'Until today, 19:50 hs');
+				assert.equal(Dates.formatDelivery('2024-10-19T22:50:03.553Z'), 'Until tomorrow, 19:50 hs');
+			});
 		});
 
-		it.only('expect to return relative date when is today', () => {
-			const Dates = new DateHandler();
+		describe('with lang pt', () => {
+			const Dates = new DateHandler({ locale: 'pt' });
+			it('expect to return formatted date with string or one string inside array', () => {
+				assert.equal(Dates.formatDelivery(['2024-10-15T22:50:03.553Z']), 'Até 15 out, 19:50 hs');
+			});
 
-			assert.equal(Dates.formatDelivery('2024-10-18T22:50:03.553Z'), 'Until today, 19:50 hs');
-			assert.equal(Dates.formatDelivery('2024-10-19T22:50:03.553Z'), 'Until tomorrow, 19:50 hs');
+			it('expect to return relative date when is today or tomorrow', () => {
+				assert.equal(Dates.formatDelivery('2024-10-18T22:50:03.553Z'), 'Até hoje, 19:50 hs');
+				assert.equal(Dates.formatDelivery('2024-10-19T22:50:03.553Z'), 'Até amanhã, 19:50 hs');
+			});
 		});
 	});
 
@@ -47,88 +65,73 @@ describe('format method', () => {
 			assert.equal(Dates.formatDelivery([{}, NaN]), null);
 		});
 
-		it('expect to return relative date when is today with one data time with same time', () => {
-			const Dates = new DateHandler();
-			assert.equal(
-				Dates.formatDelivery(['2024-10-18T22:50:03.553Z', '2024-10-18T22:50:03.553Z']),
-				'Until today, 19:50'
-			);
-		});
+		describe('with lang es', () => {
+			const Dates = new DateHandler({ locale: 'es' });
 
-		it('expect to return relative date when is tomorrow with one data time with same time', () => {
-			const Dates = new DateHandler();
-			assert.equal(
-				Dates.formatDelivery(['2024-10-19T22:50:03.553Z', '2024-10-19T22:50:03.553Z']),
-				'Until Tomorrow, 19:50 hs'
-			);
-		});
+			it('expect to return relative date when the two dates are equals', () => {
+				assert.equal(
+					Dates.formatDelivery(['2024-10-18T22:50:03.553Z', '2024-10-18T22:50:03.553Z']),
+					'Hasta hoy, 19:50 hs'
+				);
 
-		it('expect to return date with one data time with same time', () => {
-			const Dates = new DateHandler();
-			assert.equal(
-				Dates.formatDeliveryDate(['2024-10-24T22:50:03.553Z', '2024-10-24T22:50:03.553Z']),
-				'Until Tomorrow, 19:50 hs'
-			);
-		});
+				assert.equal(
+					Dates.formatDelivery(['2024-10-19T22:50:03.553Z', '2024-10-19T22:50:03.553Z']),
+					'Hasta mañana, 19:50 hs'
+				);
+			});
 
-		it('expect to return range date when is relative date and range time', () => {
-			const Dates = new DateHandler();
-			assert.equal(
-				Dates.formatDelivery(['2024-10-18T20:50:03.553Z', '2024-10-18T22:50:03.553Z']),
-				'Today, 17:50 - 19:50 hs'
-			);
-		});
+			it('expect to return range date when is relative date and range time', () => {
+				assert.equal(
+					Dates.formatDelivery(['2024-10-18T20:50:03.553Z', '2024-10-18T22:50:03.553Z']),
+					'Hoy, 17:50 - 19:50 hs'
+				);
 
-		it('expect to return range date when is not relative date and single time', () => {
-			const Dates = new DateHandler();
-			assert.equal(
-				Dates.formatDelivery(['2024-10-20T22:50:03.553Z', '2024-10-21T22:50:03.553Z']),
-				'Oct 20 19:50 - Oct 21 19:50'
-			);
-		});
+				assert.equal(
+					Dates.formatDelivery(['2024-10-19T20:50:03.553Z', '2024-10-19T22:50:03.553Z']),
+					'Mañana, 17:50 - 19:50 hs'
+				);
+			});
 
-		it('expect to return range date when is not relative but same date with range time', () => {
-			const Dates = new DateHandler();
-			assert.equal(
-				Dates.formatDelivery(['2024-10-20T22:50:03.553Z', '2024-10-20T23:50:03.553Z']),
-				'Oct 20, 19:50 - 20:50 hs'
-			);
+			it('expect to return range date when is not relative date and single time', () => {
+				assert.equal(
+					Dates.formatDelivery(['2024-10-20T22:50:03.553Z', '2024-10-21T22:50:03.553Z']),
+					'20 oct, 19:50 - 21 oct, 19:50 hs'
+				);
+			});
 
-			Dates.setLanguage('es');
-			assert.equal(
-				Dates.formatDelivery(['2024-10-20T22:50:03.553Z', '2024-10-20T23:50:03.553Z']),
-				'20 oct, 19:50 - 20:50 hs'
-			);
-		});
+			it('expect to return range date when is not relative but same date with range time', () => {
+				assert.equal(
+					Dates.formatDelivery(['2024-10-20T22:50:03.553Z', '2024-10-20T23:50:03.553Z']),
+					'20 oct, 19:50 - 20:50 hs'
+				);
+			});
 
-		it('expect to return range date when is not relative date with range time', () => {
-			const Dates = new DateHandler();
-			assert.equal(
-				Dates.formatDelivery(['2024-10-20T22:50:03.553Z', '2024-10-21T23:50:03.553Z']),
-				'Oct 20, 19:50 - Oct 21, 20:50'
-			);
-		});
+			it('expect to return range date when is not relative date with range time', () => {
+				assert.equal(
+					Dates.formatDelivery(['2024-10-20T22:50:03.553Z', '2024-10-21T23:50:03.553Z']),
+					'20 oct, 19:50 - 21 oct, 20:50 hs'
+				);
+			});
 
-		it('expect to return range date with year when dates are from different year', () => {
-			const Dates = new DateHandler();
-			assert.equal(
-				Dates.formatDelivery(['2024-10-20T22:50:03.553Z', '2025-10-21T23:50:03.553Z']),
-				'Oct 20 2024, 19:50 - Oct 21 2025, 20:50'
-			);
-		});
+			it('expect to return range date with year when dates are from different year', () => {
+				assert.equal(
+					Dates.formatDelivery(['2024-10-20T22:50:03.553Z', '2025-10-21T23:50:03.553Z']),
+					'20 oct 2024, 19:50 - 21 oct 2025, 20:50 hs'
+				);
+			});
 
-		it('expect to return range date with not undefined value and take first two value ', () => {
-			const Dates = new DateHandler();
-			assert.equal(
-				Dates.formatDelivery([
-					'2024-10-20T22:50:03.553Z',
-					undefined,
-					'2024-10-21T23:50:03.553Z',
-					[],
-					'2024-10-21T23:50:03.553Z'
-				]),
-				'Oct 20, 19:50 - oct 21, 20:50 hs'
-			);
+			it('expect to return range date with not undefined value and take first two value ', () => {
+				assert.equal(
+					Dates.formatDelivery([
+						'2024-10-20T22:50:03.553Z',
+						undefined,
+						'2024-10-21T23:50:03.553Z',
+						[],
+						'2024-10-21T23:50:03.553Z'
+					]),
+					'20 oct, 19:50 - 21 oct, 20:50 hs'
+				);
+			});
 		});
 	});
 });
