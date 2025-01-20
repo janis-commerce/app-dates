@@ -22,10 +22,10 @@ describe('format method', () => {
 			assert.equal(Dates.format([]), null);
 		});
 
-		it.only('expect to return formatted date with string or one string inside array', () => {
+		it('expect to return formatted date with string or one string inside array', () => {
 			const Dates = new DateHandler({ locale: 'es' });
-			assert.equal(Dates.format(['2024-10-15T22:50:03.553Z']), 'Until 15/10, 19:50 hs');
-			assert.equal(Dates.format('2024-10-14T22:50:03.553Z'), 'Until 14/10, 19:50 hs');
+			assert.equal(Dates.format(['2024-10-15T22:50:03.553Z']), 'Hasta 15 oct, 19:50 hs');
+			assert.equal(Dates.format('2024-10-14T22:50:03.553Z'), 'Hasta 14 oct, 19:50 hs');
 		});
 
 		it('expect to return formatted Date in Spanish format', () => {
