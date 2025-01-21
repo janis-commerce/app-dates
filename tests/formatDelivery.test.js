@@ -7,7 +7,7 @@ const mockNow = new Date(2024, 9, 18, 0, 0);
 
 let clock;
 //"2024-10-18T22:50:03.553Z"
-describe('format method', () => {
+describe('formatDelivery method', () => {
 	before(() => {
 		clock = useFakeTimers(mockNow);
 	});
