@@ -108,3 +108,8 @@ message will be logged using <code>logError</code> and <code>null</code> will be
 | format | <code>string</code> | <p>The <code>format</code> parameter in the <code>format</code> function is used to specify the format in which the date should be displayed. It could be a string containing a combination of date and time format tokens, such as 'YYYY-MM-DD HH:mm:ss'. This format string defines how the date should be formatted</p> <ul> <li>For more information, see <a href="https://date-fns.org/v4.1.0/docs/format">formats</a></li> </ul> |
 | options |  | <p>Options is an object that can contain additional configuration settings for formatting the date. These settings can include things like specifying the time zone, customizing the output format, or providing any other specific requirements for formatting the date.</p> <ul> <li>locale inherits it from the instance of class</li> <li>For more information, see <a href="https://date-fns.org/v4.1.0/docs/format#types/FormatOptions/630">options</a></li> </ul> |
 
+**Example**  
+```js
+const Dates = new DateHandler({locale: 'es'})
+Dates.format('2024-10-04T21:26:33.801Z', '') // 10/04/2024
+```
