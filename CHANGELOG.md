@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 [Unreleased]
 
+## [1.2.0] - 2025-01-24
+
+### Removed
+
+- word hours only for en locale
+
 ## [1.1.0] - 2025-01-21
 
 ### Changed
