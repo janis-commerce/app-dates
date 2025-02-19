@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 [Unreleased]
 
+## [1.3.0] - 2025-02-19
+
+### Changed
+
+- Export and import for helpers
+
 ## [1.2.0] - 2025-01-24
 
 ### Removed
