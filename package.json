@@ -10,8 +10,7 @@
 		"build-docs": "jsdoc2md --template template-readme.hbs --configure ./jsdoc2md.json --files lib/*.js > README.md",
 		"test": "export TEST_ENV=true; mocha --exit -R nyan --recursive tests/",
 		"test:ci": "export NODE_ENV=development; c8 --reporter=lcov --reporter=text mocha --exit --recursive tests/",
-		"coverage": "nyc npm test",
-		"validate:code": "npm run lint -- --fix  && jest --collectCoverage"
+		"coverage": "nyc npm test"
 	},
 	"files": [
 		"lib/"
