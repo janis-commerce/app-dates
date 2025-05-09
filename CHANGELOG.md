@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 [Unreleased]
 
+## [1.4.0] - 2025-05-09
+
+### Removed
+
+- process env for logError
+
+### Added
+
+- flag debug in config instance
+
+### Changed
+
+- execute logError if debug is true
+
 ## [1.3.0] - 2025-02-19
 
 ### Changed
