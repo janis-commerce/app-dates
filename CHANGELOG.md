@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 [Unreleased]
 
+## [1.4.1] - 2025-07-31
+
+### Fixed
+
+- Language mapper support for country-specific locale codes (es-AR, es-NI, es-CL, es-PE, es-GT, en-US)
+- Test coverage for derived Spanish language variants
+
+### Changed
+
+- Refactored Portuguese locale configuration to reduce code duplication between pt and pt-BR
+- Enhanced locale resolution to support country-specific language codes that map to base languages
+
 ## [1.4.0] - 2025-05-09
 
 ### Removed
