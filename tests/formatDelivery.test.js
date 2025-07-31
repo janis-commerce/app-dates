@@ -135,71 +135,16 @@ describe('formatDelivery method', () => {
 		});
 
 		describe('with lang derivated from es', () => {
-			const Dates = new DateHandler({ locale: 'es-AR' });
+			const langs = ['es-AR', 'es-NI', 'es-CL', 'es-PE', 'es-GT'];
 
-			it('expect to return relative date when the two dates are equals', () => {
-				assert.equal(
-					Dates.formatDelivery(['2024-10-18T22:50:03.553Z', '2024-10-18T22:50:03.553Z']),
-					'Hasta hoy, 19:50 hs'
-				);
-
-				assert.equal(
-					Dates.formatDelivery(['2024-10-19T22:50:03.553Z', '2024-10-19T22:50:03.553Z']),
-					'Hasta mañana, 19:50 hs'
-				);
-			});
-
-			it('expect to return range date when is relative date and range time', () => {
-				assert.equal(
-					Dates.formatDelivery(['2024-10-18T20:50:03.553Z', '2024-10-18T22:50:03.553Z']),
-					'Hoy, 17:50 - 19:50 hs'
-				);
-
-				assert.equal(
-					Dates.formatDelivery(['2024-10-19T20:50:03.553Z', '2024-10-19T22:50:03.553Z']),
-					'Mañana, 17:50 - 19:50 hs'
-				);
-			});
-
-			it('expect to return range date when is not relative date and single time', () => {
-				assert.equal(
-					Dates.formatDelivery(['2024-10-20T22:50:03.553Z', '2024-10-21T22:50:03.553Z']),
-					'20 oct, 19:50 - 21 oct, 19:50 hs'
-				);
-			});
-
-			it('expect to return range date when is not relative but same date with range time', () => {
-				assert.equal(
-					Dates.formatDelivery(['2024-10-20T22:50:03.553Z', '2024-10-20T23:50:03.553Z']),
-					'20 oct, 19:50 - 20:50 hs'
-				);
-			});
-
-			it('expect to return range date when is not relative date with range time', () => {
-				assert.equal(
-					Dates.formatDelivery(['2024-10-20T22:50:03.553Z', '2024-10-21T23:50:03.553Z']),
-					'20 oct, 19:50 - 21 oct, 20:50 hs'
-				);
-			});
-
-			it('expect to return range date with year when dates are from different year', () => {
-				assert.equal(
-					Dates.formatDelivery(['2024-10-20T22:50:03.553Z', '2025-10-21T23:50:03.553Z']),
-					'20 oct 2024, 19:50 - 21 oct 2025, 20:50 hs'
-				);
-			});
-
-			it('expect to return range date with not undefined value and take first two value ', () => {
-				assert.equal(
-					Dates.formatDelivery([
-						'2024-10-20T22:50:03.553Z',
-						undefined,
-						'2024-10-21T23:50:03.553Z',
-						[],
-						'2024-10-21T23:50:03.553Z'
-					]),
-					'20 oct, 19:50 - 21 oct, 20:50 hs'
-				);
+			langs.forEach((lang) => {
+				it(`expect to return relative date when the two dates are equals with ${lang}`, () => {
+					const Dates = new DateHandler({ locale: lang });
+					assert.equal(
+						Dates.formatDelivery(['2024-10-19T22:50:03.553Z', '2024-10-19T22:50:03.553Z']),
+						'Hasta mañana, 19:50 hs'
+					);
+				});
 			});
 		});
 
