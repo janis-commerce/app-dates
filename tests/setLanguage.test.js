@@ -2,7 +2,7 @@
 import DateHandler from '../lib/index.js';
 import { useFakeTimers } from 'sinon';
 import { strict as assert } from 'assert';
-import locales from '../lib/locales.js';
+import { locales } from '../lib/locales.js';
 
 const mockNow = new Date(2024, 9, 18, 0, 0);
 

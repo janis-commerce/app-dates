@@ -1,5 +1,5 @@
 import DateHandler from '../lib/index.js';
-import locales from '../lib/locales.js';
+import { locales } from '../lib/locales.js';
 import { strict as assert } from 'assert';
 import { spy } from 'sinon';
 
