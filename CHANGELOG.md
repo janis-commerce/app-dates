@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 
 [Unreleased]
 
+## [1.5.0] - 2025-08-01
+
+### Added
+
+- New `getLocale` function that centralizes locale configuration retrieval
+- New `mapLanguage` function for mapping regional language variants to base languages
+- Named exports for `languageMapper` and `locales` objects for better modularity
+
+### Changed
+
+- Refactored DateHandler constructor to use the new `getLocale` function instead of direct locale mapping
+- Refactored `setLanguage` method to use the new `getLocale` function for better consistency
+- Improved locale resolution system with dedicated functions for better maintainability
+- Updated test imports to use named exports from locales module
+
+### Improved
+
+- Enhanced code organization by centralizing locale logic in dedicated functions
+- Better separation of concerns in locale management system
+
 ## [1.4.1] - 2025-07-31
 
 ### Fixed
